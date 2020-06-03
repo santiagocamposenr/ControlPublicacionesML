@@ -108,11 +108,10 @@ class Scraper_juguetimax():
         self.__driver.close()
 
 
-    def __createSoup(self, url):
+    def check_request_status(self, url):
         response = requests.get(url)
-        response.raise_for_status()
-        html = BeautifulSoup(response.text, 'html.parser')
-        return html
+        request_status = response.status_code
+        return request_status
 
 
 if __name__ == '__main__':
