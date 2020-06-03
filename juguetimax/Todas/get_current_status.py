@@ -34,5 +34,5 @@ def get_current_status(spreadsheet_id, range_):
 if __name__ == '__main__':
     spreadsheet_id = "1j0GvVT41xTc-mMLuyar2SEE7A3b8B8q4eItXdUhryz0"
     range_ = 'Todas!E:E'
-    row_status = get__current_status(spreadsheet_id, range_)
+    row_status = get_current_status(spreadsheet_id, range_)
     print(row_status)

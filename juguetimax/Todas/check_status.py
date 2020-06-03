@@ -42,13 +42,18 @@ def check_status():
                     rows_bad_links[row] = (link, request_status)
                 else:
                     new_status = 'pausada'
-
-            if new_status == row_status[row]:
-                pass
-            else:
+            
+            try:
+                if new_status == row_status[row]:
+                    pass
+                else:
+                    #aqui registro las filas donde cambio es status 
+                    #en las tuplas el primer elemento es el status de la sheet y el segundo es el status de la pagina de juguetimax
+                    rows_changed[row] = (row_status[row], new_status)
+            except:
                 #aqui registro las filas donde cambio es status 
                 #en las tuplas el primer elemento es el status de la sheet y el segundo es el status de la pagina de juguetimax
-                rows_changed[row] = (row_status[row], new_status)
+                rows_changed[row] = ('', new_status)
 
     scraper.log_out()
     scraper.close_driver()
