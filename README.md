@@ -51,3 +51,10 @@ creds:
 
 **use the name creds.yaml or the code will not run. If you do so, your information will be safe; git ignores all .yaml files.** 
 **if you choose another name you'll have to modified config.py file inside Todas directory**
+
+##### 9. File with google sheets credentials
+
+you must generate your google sheets api credentials. Place the file inside *juguetimax* directory; the path is the following: ControlPublicacionesML/juguetimax/
+
+**it must be a .json file**
+**it must be named creds.json or the code will not run properly**
