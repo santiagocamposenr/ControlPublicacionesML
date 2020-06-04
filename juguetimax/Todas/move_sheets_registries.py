@@ -15,7 +15,7 @@ def create_range_to_activas(row):
     range_ = 'Activas!' + str(row) + ':' + str(row)
     return range_
 
-def move_to_pausadas(rows_changed_from_check_status_price_function, spreadsheet_id):
+def move_to_pausadas(rows_changed_from_check_status_price_function, rows_price, spreadsheet_id):
     print('moving to Pausadas')
     ## esta funcion te regresa un dict row_en_todas:(pub_id, product_name)
     moves = {}
@@ -127,6 +127,8 @@ def move_to_pausadas(rows_changed_from_check_status_price_function, spreadsheet_
                     response = request.execute()
 
             except:
+                price = rows_price[row]
+
                 ## insertar en fila vacia
                 if len(empty_rows) > 0:
                     ## here we make sure we get authorize
@@ -141,7 +143,7 @@ def move_to_pausadas(rows_changed_from_check_status_price_function, spreadsheet_
                         "range": range_,
                         "majorDimension": 'ROWS',
                         "values": [
-                            [product_name, publication_id]
+                            [product_name, publication_id, '', price]
                         ]
                         }
 
@@ -165,7 +167,7 @@ def move_to_pausadas(rows_changed_from_check_status_price_function, spreadsheet_
                     "range": range_,
                     "majorDimension": 'ROWS',
                     "values": [
-                        [product_name, publication_id]
+                        [product_name, publication_id, '', price]
                     ]
                     }
 
@@ -181,7 +183,7 @@ def move_to_pausadas(rows_changed_from_check_status_price_function, spreadsheet_
     return moves
 
 
-def move_to_activas(rows_changed_from_check_status_price_function, spreadsheet_id):
+def move_to_activas(rows_changed_from_check_status_price_function, rows_price, spreadsheet_id):
     print('moving to Activas')
     ## esta funcion te regresa un dict row_en_todas:(pub_id, product_name)
     moves = {}
@@ -293,6 +295,8 @@ def move_to_activas(rows_changed_from_check_status_price_function, spreadsheet_i
                     response = request.execute()
 
             except:
+                price = rows_price[row]
+
                 ## insertar en fila vacia
                 if len(empty_rows) > 0:
                     ## here we make sure we get authorize
@@ -307,7 +311,7 @@ def move_to_activas(rows_changed_from_check_status_price_function, spreadsheet_i
                         "range": range_,
                         "majorDimension": 'ROWS',
                         "values": [
-                            [product_name, publication_id]
+                            [product_name, publication_id, '', price]
                         ]
                         }
 
@@ -331,7 +335,7 @@ def move_to_activas(rows_changed_from_check_status_price_function, spreadsheet_i
                     "range": range_,
                     "majorDimension": 'ROWS',
                     "values": [
-                        [product_name, publication_id]
+                        [product_name, publication_id, '', price]
                     ]
                     }
 

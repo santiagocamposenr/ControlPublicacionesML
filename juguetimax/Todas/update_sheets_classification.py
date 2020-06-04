@@ -16,9 +16,9 @@ def update_sheets_classification(spreadsheet_id, range_for_links, range_for_stat
         #for row in errors_in_ml_function:
             #rows_changed.pop(row)
     
-    moves_to_activas = move_to_activas(rows_changed, spreadsheet_id)
+    moves_to_activas = move_to_activas(rows_changed, rows_price, spreadsheet_id)
 
-    moves_to_pausadas = move_to_pausadas(rows_changed, spreadsheet_id)
+    moves_to_pausadas = move_to_pausadas(rows_changed, rows_price, spreadsheet_id)
 
     change_status_in_todas(moves_to_activas, moves_to_pausadas, spreadsheet_id)
     
