@@ -22,11 +22,11 @@ def update_sheets_classification(spreadsheet_id, range_for_links, range_for_stat
 
     change_status_in_todas(moves_to_activas, moves_to_pausadas, spreadsheet_id)
     
-    print('moves to activas:\n')
+    print('move to activas:\n')
     for row, value in moves_to_activas.items():
         print('row:', row, '\nid:', value[0], '\nproduct name:', value[1])
 
-    print('moves to pausadas:')
+    print('move to pausadas:')
     for row, value in moves_to_pausadas.items():
         print('row:', row, '\nid:', value[0], '\nproduct name:', value[1])
 
