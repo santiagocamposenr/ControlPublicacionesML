@@ -11,12 +11,12 @@ def request_ml(dict_for_ml_changes):
         "Accept: application/json"
     }
 
-    errors_in_ml_function = {}
+    errors_in_ml_function = []
 
     for row, value in dict_for_ml_changes.items():
-        if value == "Activa":
+        if value[1] == "activa":
             #https://api.mercadolibre.com/items/ITEM_ID?access_token=YOUR_ACCESS_TOKEN
-            url_ = url + row + "?access_token" + access_token
+            url_ = url + value[0] + "?access_token=" + access_token
             payload = {
                 "status": "active"
             }
@@ -25,9 +25,12 @@ def request_ml(dict_for_ml_changes):
                 headers=header,
                 data=json.dumps(payload),
             )
-            errors_in_ml_function[row] = r.status_code
+            if r.status_code == 200:
+                pass
+            else:
+                errors_in_ml_function.append(row)
         else:
-            url_ = url + row + "?access_token" + access_token
+            url_ = url + value[0] + "?access_token=" + access_token
             payload = {
                 "status": "paused"
             }
@@ -36,5 +39,9 @@ def request_ml(dict_for_ml_changes):
                 headers=header,
                 data=json.dumps(payload),
             )
-            errors_in_ml_function[row] = r.status_code
+            if r.status_code == 200:
+                pass
+            else:
+                errors_in_ml_function.append(row)
+
     return errors_in_ml_function
