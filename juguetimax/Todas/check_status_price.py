@@ -29,10 +29,10 @@ def check_status_price(spreadsheet_id, range_for_links, range_for_status):
                 new_status = 'activa'
             else:
                 if availability == None:
-                    print('availability not found for link in row', row)
-                    print('availability not found for link:\n', link)
+                    #print('availability not found for link in row', row)
+                    #print('availability not found for link:\n', link)
                     request_status = scraper.check_request_status(link)
-                    print('request status =', request_status)
+                    #print('request status =', request_status)
                     new_status = 'pausada'
                     #aqui registro los link donde no se encontro availability
                     #en las tuplas se registra el link el estatus de la request
@@ -54,10 +54,10 @@ def check_status_price(spreadsheet_id, range_for_links, range_for_status):
 
             price = scraper.get_price()
             if price == None:
-                    print('price not found for link in row', row)
-                    print('price not found for link:\n', link)
+                    #print('price not found for link in row', row)
+                    #print('price not found for link:\n', link)
                     request_status = scraper.check_request_status(link)
-                    print('request status =', request_status)
+                    #print('request status =', request_status)
                     rows_price[row] = ''
             else:
                 rows_price[row] = price

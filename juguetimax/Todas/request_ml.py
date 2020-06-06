@@ -2,13 +2,14 @@ import requests
 import json
 
 def request_ml(dict_for_ml_changes):
+    print('making requests to mercado libre')
     ## dict row : (id, status)
     url = "https://api.mercadolibre.com/items/"
     #Actualmente hay que agregar el token al correr el proyecto
-    access_token = ""
+    access_token = "APP_USR-4137836578285892-060621-ca11da13828d48c95ee8996930dd6f10-543440847"
     header = {
         "Content-Type": "application/json",
-        "Accept: application/json"
+        "Accept": "application/json"
     }
 
     errors_in_ml_function = []

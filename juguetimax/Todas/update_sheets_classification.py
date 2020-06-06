@@ -11,11 +11,11 @@ def update_sheets_classification(spreadsheet_id, range_for_links, range_for_stat
 
     dict_for_ml_changes = make_dict_for_ml(rows_changed, spreadsheet_id)
 
-    #errors_in_ml_function = request_ml(dict_for_ml_changes)
+    errors_in_ml_function = request_ml(dict_for_ml_changes)
 
-    #if len(errors_in_ml_function) > 0:
-        #for row in errors_in_ml_function:
-            #rows_changed.pop(row)
+    if len(errors_in_ml_function) > 0:
+        for row in errors_in_ml_function:
+            rows_changed.pop(row)
     
     moves_to_activas = move_to_activas(rows_changed, rows_price, spreadsheet_id)
 
@@ -30,6 +30,8 @@ def update_sheets_classification(spreadsheet_id, range_for_links, range_for_stat
     print('move to pausadas:')
     for row, value in moves_to_pausadas.items():
         print('row:', row, '\nid:', value[0], '\nproduct name:', value[1])
+
+    print('errors in ml function:\n', errors_in_ml_function)
 
 
 if __name__ == '__main__':

@@ -30,7 +30,7 @@ class Scraper_juguetimax():
             self.__driver.get('https://www.juguetimax.com/account/login?checkout_url=/')
             ## making sure the page loaded
             #time.sleep(10)
-            delay = 5
+            delay = 2
             page_loaded = WebDriverWait(self.__driver, delay).until(EC.presence_of_element_located((By.XPATH, '//div[@class="form-field"]/input[@id="customer_email"]')))
             
             email_box = self.__driver.find_element_by_xpath('//form[@action="/account/login"]/div[@class="form-field"]/input[@id="customer_email"]')
@@ -42,7 +42,7 @@ class Scraper_juguetimax():
             log_in_button = self.__driver.find_element_by_xpath('//form[@action="/account/login"]/div[@class="form-action-row"]/button[@type="submit"]')
             log_in_button.click()
 
-            time.sleep(3)
+            time.sleep(2)
         except:
             print('error in log_in function; it was not possible to log-in')
 
@@ -62,7 +62,7 @@ class Scraper_juguetimax():
         try:
             ## making sure the page loaded
             #time.sleep(10)
-            delay = 5
+            delay = 2
             page_loaded = WebDriverWait(self.__driver, delay).until(EC.presence_of_element_located((By.XPATH, '//h1[@class="product-title"]/p')))
             
             availability = self.__driver.find_element_by_xpath('//h1[@class="product-title"]/p').text
@@ -70,7 +70,7 @@ class Scraper_juguetimax():
             return availability
 
         except:
-            print('error in get_availability function\n')
+            #print('error in get_availability function\n')
             return None
 
 
@@ -80,7 +80,7 @@ class Scraper_juguetimax():
         try:
             ## making sure the page loaded
             #time.sleep(10)
-            delay = 5
+            delay = 2
             page_loaded = WebDriverWait(self.__driver, delay).until(EC.presence_of_element_located((By.XPATH, '//div[@class="price--main"]/span')))
 
             price_text = self.__driver.find_element_by_xpath('//div[@class="price--main"]/span').text
@@ -90,14 +90,14 @@ class Scraper_juguetimax():
             return price
 
         except:
-            print('error in get_price function\n')
+            #print('error in get_price function\n')
             return None
 
 
     def log_out(self):
         ## making sure the page loaded
         #time.sleep(10)
-        delay = 5
+        delay = 2
         page_loaded = WebDriverWait(self.__driver, delay).until(EC.presence_of_element_located((By.XPATH, '//li[@class="site-header-account-link"]/a[@href="/account/logout"]')))
         
         log_out_button = self.__driver.find_element_by_xpath('//li[@class="site-header-account-link"]/a[@href="/account/logout"]')
