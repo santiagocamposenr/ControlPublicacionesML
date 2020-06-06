@@ -2,6 +2,7 @@ from check_status_price import check_status_price
 from move_sheets_registries import move_to_activas, move_to_pausadas
 from make_dict_for_ml import make_dict_for_ml
 from change_status_in_todas import change_status_in_todas
+from request_ml import request_ml
 
 def update_sheets_classification(spreadsheet_id, range_for_links, range_for_status):
     print('updating sheets classification')
@@ -10,7 +11,7 @@ def update_sheets_classification(spreadsheet_id, range_for_links, range_for_stat
 
     dict_for_ml_changes = make_dict_for_ml(rows_changed, spreadsheet_id)
 
-    #errors_in_ml_function = function_ml(dict_for_ml_changes)
+    #errors_in_ml_function = request_ml(dict_for_ml_changes)
 
     #if len(errors_in_ml_function) > 0:
         #for row in errors_in_ml_function:
