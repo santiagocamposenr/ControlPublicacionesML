@@ -20,6 +20,7 @@ class Scraper_juguetimax():
         self.__driver = webdriver.Chrome(executable_path='../chromedriver')
         self.__creds_email = config()['creds']['email']
         self.__creds_password = config()['creds']['password']
+        self.__driver.set_window_size(1300,800)
         self.__log_in(self.__creds_email, self.__creds_password)
 
 
